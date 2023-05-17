@@ -1,4 +1,15 @@
-from Bot import Bot
+from abc import ABC, abstractmethod
+
+
+class AbstractBot(ABC):
+    @abstractmethod
+    def handle(self, command):
+        pass
+
+
+class Bot(AbstractBot):
+    def handle(self, command):
+        pass
 
 
 if __name__ == "__main__":
@@ -9,7 +20,7 @@ if __name__ == "__main__":
     while True:
         action = input('Type help for list of commands or enter your command\n').strip().lower()
         if action == 'help':
-            format_str = str('{:%s%d}' % ('^',20))
+            format_str = str('{:%s%d}' % ('^', 20))
             for command in commands:
                 print(format_str.format(command))
             action = input().strip().lower()
